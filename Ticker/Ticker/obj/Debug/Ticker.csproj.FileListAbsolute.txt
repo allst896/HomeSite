@@ -1,0 +1,5 @@
+C:\Users\allst\Documents\GitHub\portfolio\Ticker\Ticker\obj\Debug\Ticker.csprojAssemblyReference.cache
+C:\Users\allst\Documents\GitHub\portfolio\Ticker\Ticker\obj\Debug\View\MainWindow.g.cs
+C:\Users\allst\Documents\GitHub\portfolio\Ticker\Ticker\obj\Debug\App.g.cs
+C:\Users\allst\Documents\GitHub\portfolio\Ticker\Ticker\obj\Debug\Ticker_MarkupCompile.cache
+C:\Users\allst\Documents\GitHub\portfolio\Ticker\Ticker\obj\Debug\Ticker_MarkupCompile.lref
