@@ -25,7 +25,7 @@ namespace Ticker.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://ondemand.websol.barchart.com/service?wsdl")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://ondemand.websol.barchart.com/")]
         public string BarchartURL {
             get {
                 return ((string)(this["BarchartURL"]));

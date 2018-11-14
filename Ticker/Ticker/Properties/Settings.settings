@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="BarchartURL" Type="System.String" Scope="User">
-      <Value Profile="(Default)">https://ondemand.websol.barchart.com/service?wsdl</Value>
+      <Value Profile="(Default)">https://ondemand.websol.barchart.com/</Value>
     </Setting>
     <Setting Name="BarchartAPIKey" Type="System.String" Scope="User">
       <Value Profile="(Default)">7dc15e2195a9ccc280f286b10584c9c5</Value>
