@@ -9,6 +9,7 @@ using System.IO;
 using System.Xml;
 using IronPython.Hosting;
 using Microsoft.Scripting.Hosting;
+using Ticker.com.barchart.websol.marketdata;
 
 namespace Ticker.Helpers
 {
@@ -33,12 +34,13 @@ namespace Ticker.Helpers
 
         public static string BarchartOnDemand()
         {
-            var engine = Python.CreateEngine();
-            var scope = engine.CreateScope();
+            
+            //var engine = Python.CreateEngine();
+            //var scope = engine.CreateScope();
 
-            ScriptSource source = engine.CreateScriptSourceFromFile(Directory.GetCurrentDirectory() + "\\ondemand.py");
-            object result = source.Execute(scope);
-            return result.ToString();
+            //ScriptSource source = engine.CreateScriptSourceFromFile(Directory.GetCurrentDirectory() + "\\ondemand.py");
+            //object result = source.Execute(scope);
+            //return result.ToString();
         }
     }
 }
