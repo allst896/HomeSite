@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="schemas.xmlsoap.org/soap/encoding/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:tns="http://marketdata.websol.barchart.com/service" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="onDemand" targetNamespace="http://marketdata.websol.barchart.com/service" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://marketdata.websol.barchart.com/service">
+      <xs:element name="getQuote">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="1" maxOccurs="1" name="apikey" type="xs:string" />
+            <xs:element minOccurs="1" maxOccurs="1" name="symbols" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="1" name="fields" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="1" name="mode" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="1" name="jerq" type="xs:boolean" />
+            <xs:element minOccurs="0" maxOccurs="1" name="exchangeFilter" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="1" name="only" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getHistory">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="1" maxOccurs="1" name="apikey" type="xs:string" />
+            <xs:element minOccurs="1" maxOccurs="1" name="symbol" type="xs:string" />
+            <xs:element minOccurs="1" maxOccurs="1" name="type" type="tns:getHistoryTypeEnum" />
+            <xs:element minOccurs="0" maxOccurs="1" name="startDate" type="xs:dateTime" />
+            <xs:element minOccurs="0" maxOccurs="1" name="maxRecords" type="xs:int" />
+            <xs:element minOccurs="0" maxOccurs="1" name="interval" type="xs:int" />
+            <xs:element minOccurs="0" maxOccurs="1" name="order" type="tns:getHistoryOrderEnum" />
+            <xs:element minOccurs="0" maxOccurs="1" name="sessionFilter" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="1" name="splits" type="xs:boolean" />
+            <xs:element minOccurs="0" maxOccurs="1" name="dividends" type="xs:boolean" />
+            <xs:element minOccurs="0" maxOccurs="1" name="volume" type="tns:getHistoryVolumeEnum" />
+            <xs:element minOccurs="0" maxOccurs="1" name="nearby" type="xs:int" />
+            <xs:element minOccurs="0" maxOccurs="1" name="jerq" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:simpleType name="getHistoryTypeEnum">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="minutes" />
+          <xs:enumeration value="nearbyMinutes" />
+          <xs:enumeration value="formTMinutes" />
+          <xs:enumeration value="daily" />
+          <xs:enumeration value="dailyNearest" />
+          <xs:enumeration value="dailyContinue" />
+          <xs:enumeration value="weekly" />
+          <xs:enumeration value="weeklyNearest" />
+          <xs:enumeration value="weeklyContinue" />
+          <xs:enumeration value="monthly" />
+          <xs:enumeration value="monthlyNearest" />
+          <xs:enumeration value="monthlyContinue" />
+          <xs:enumeration value="quarterly" />
+          <xs:enumeration value="quarterlyNearest" />
+          <xs:enumeration value="quarterlyContinue" />
+          <xs:enumeration value="yearly" />
+          <xs:enumeration value="yearlyNearest" />
+          <xs:enumeration value="yearlyContinue" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="getHistoryOrderEnum">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="asc" />
+          <xs:enumeration value="desc" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="getHistoryVolumeEnum">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="total" />
+          <xs:enumeration value="sum" />
+          <xs:enumeration value="contract" />
+          <xs:enumeration value="sumcontract" />
+          <xs:enumeration value="sumtotal" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="getQuoteResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="getQuoteResult" type="tns:getQuoteArray" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="getQuoteArray">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="getQuoteItem" type="tns:getQuoteItem" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getQuoteItem">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="symbol" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="exchange" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="name" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="dayCode" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="serverTimestamp" type="xs:dateTime" />
+          <xs:element minOccurs="1" maxOccurs="1" name="mode" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="lastPrice" type="xs:double" />
+          <xs:element minOccurs="0" maxOccurs="1" name="tradeSize" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="tradeTimestamp" type="xs:dateTime" />
+          <xs:element minOccurs="1" maxOccurs="1" name="netChange" type="xs:double" />
+          <xs:element minOccurs="1" maxOccurs="1" name="percentChange" type="xs:double" />
+          <xs:element minOccurs="0" maxOccurs="1" name="tick" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="previousLastPrice" type="xs:double" />
+          <xs:element minOccurs="0" maxOccurs="1" name="previousTimestamp" type="xs:date" />
+          <xs:element minOccurs="0" maxOccurs="1" name="bid" type="xs:double" />
+          <xs:element minOccurs="0" maxOccurs="1" name="bidSize" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ask" type="xs:double" />
+          <xs:element minOccurs="0" maxOccurs="1" name="askSize" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="unitCode" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="open" type="xs:double" />
+          <xs:element minOccurs="1" maxOccurs="1" name="high" type="xs:double" />
+          <xs:element minOccurs="1" maxOccurs="1" name="low" type="xs:double" />
+          <xs:element minOccurs="1" maxOccurs="1" name="close" type="xs:double" />
+          <xs:element minOccurs="1" maxOccurs="1" name="flag" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="previousClose" type="xs:double" />
+          <xs:element minOccurs="0" maxOccurs="1" name="settlement" type="xs:double" />
+          <xs:element minOccurs="0" maxOccurs="1" name="previousSettlement" type="xs:double" />
+          <xs:element minOccurs="1" maxOccurs="1" name="volume" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="openInterest" type="xs:double" />
+          <xs:element minOccurs="0" maxOccurs="1" name="fiftyTwoWkHigh" type="xs:double" />
+          <xs:element minOccurs="0" maxOccurs="1" name="fiftyTwoWkHighDate" type="xs:date" />
+          <xs:element minOccurs="0" maxOccurs="1" name="fiftyTwoWkLow" type="xs:double" />
+          <xs:element minOccurs="0" maxOccurs="1" name="fiftyTwoWkLowDate" type="xs:date" />
+          <xs:element minOccurs="0" maxOccurs="1" name="avgVolume" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="sharesOutstanding" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="dividendRateAnnual" type="xs:float" />
+          <xs:element minOccurs="0" maxOccurs="1" name="dividendYieldAnnual" type="xs:float" />
+          <xs:element minOccurs="0" maxOccurs="1" name="exDividendDate" type="xs:date" />
+          <xs:element minOccurs="0" maxOccurs="1" name="impliedVolatility" type="xs:double" />
+          <xs:element minOccurs="0" maxOccurs="1" name="twentyDayAvgVol" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="month" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="year" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="expirationDate" type="xs:date" />
+          <xs:element minOccurs="0" maxOccurs="1" name="lastTradingDay" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="twelveMnthPct" type="xs:double" />
+          <xs:element minOccurs="0" maxOccurs="1" name="twelveMnthPctDate" type="xs:date" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getHistoryResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="getHistoryResult" type="tns:getHistoryArray" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="getHistoryArray">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="getHistoryItem" type="tns:getHistoryItem" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getHistoryItem">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="symbol" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="timestamp" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="tradingDay" type="xs:date" />
+          <xs:element minOccurs="0" maxOccurs="1" name="sessionCode" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="tickPrice" type="xs:double" />
+          <xs:element minOccurs="0" maxOccurs="1" name="tickSize" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="open" type="xs:double" />
+          <xs:element minOccurs="0" maxOccurs="1" name="high" type="xs:double" />
+          <xs:element minOccurs="0" maxOccurs="1" name="low" type="xs:double" />
+          <xs:element minOccurs="0" maxOccurs="1" name="close" type="xs:double" />
+          <xs:element minOccurs="0" maxOccurs="1" name="volume" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="openInterest" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getQuoteRequest">
+    <wsdl:part name="parameters" element="tns:getQuote" />
+  </wsdl:message>
+  <wsdl:message name="getQuoteResponse">
+    <wsdl:part name="parameters" element="tns:getQuoteResponse" />
+  </wsdl:message>
+  <wsdl:message name="getHistoryRequest">
+    <wsdl:part name="parameters" element="tns:getHistory" />
+  </wsdl:message>
+  <wsdl:message name="getHistoryResponse">
+    <wsdl:part name="parameters" element="tns:getHistoryResponse" />
+  </wsdl:message>
+  <wsdl:portType name="onDemandSoap">
+    <wsdl:operation name="getQuote">
+      <wsdl:input wsaw:Action="getQuote" message="tns:getQuoteRequest" />
+      <wsdl:output wsaw:Action="getQuoteResponse" message="tns:getQuoteResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getHistory">
+      <wsdl:input wsaw:Action="getHistory" message="tns:getHistoryRequest" />
+      <wsdl:output wsaw:Action="getHistoryResponse" message="tns:getHistoryResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="onDemandSoap" type="tns:onDemandSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getQuote">
+      <soap:operation soapAction="getQuote" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getHistory">
+      <soap:operation soapAction="getHistory" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="onDemand">
+    <wsdl:port name="onDemandSoap" binding="tns:onDemandSoap">
+      <soap:address location="http://marketdata.websol.barchart.com/service" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

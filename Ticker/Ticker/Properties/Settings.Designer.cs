@@ -46,5 +46,15 @@ namespace Ticker.Properties {
                 this["BarchartAPIKey"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://marketdata.websol.barchart.com/service")]
+        public string Ticker_GetQuote_onDemand {
+            get {
+                return ((string)(this["Ticker_GetQuote_onDemand"]));
+            }
+        }
     }
 }

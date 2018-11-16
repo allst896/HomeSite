@@ -8,5 +8,8 @@
     <Setting Name="BarchartAPIKey" Type="System.String" Scope="User">
       <Value Profile="(Default)">7dc15e2195a9ccc280f286b10584c9c5</Value>
     </Setting>
+    <Setting Name="Ticker_GetQuote_onDemand" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://marketdata.websol.barchart.com/service</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

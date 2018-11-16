@@ -9,7 +9,7 @@ using System.IO;
 using System.Xml;
 using IronPython.Hosting;
 using Microsoft.Scripting.Hosting;
-using Ticker.com.barchart.websol.marketdata;
+using Ticker.GetQuote;
 
 namespace Ticker.Helpers
 {
@@ -34,7 +34,11 @@ namespace Ticker.Helpers
 
         public static string BarchartOnDemand()
         {
+            onDemand client = new onDemand();
+            getQuoteItem[] r;
             
+            r = client.getQuote("7dc15e2195a9ccc280f286b10584c9c5", "APPL", "fiftyTwoWkHigh","R",true,true,"","");
+            return r.ToString();
             //var engine = Python.CreateEngine();
             //var scope = engine.CreateScope();
 
