@@ -53,7 +53,7 @@ namespace Ticker.ViewModel
         void GetCompany(object parameter)
         {
             if (parameter == null) return;
-            Retriever.GetCompanyName(parameter.ToString());
+            TextProperty1 = Retriever.GetCompanyName(parameter.ToString());
         }
     }
 }
