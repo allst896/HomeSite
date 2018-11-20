@@ -22,6 +22,41 @@ namespace Ticker.Model
             }
         }
 
+        string _StockCompanyName;
+        public string StockCompanyName
+        {
+            get
+            {
+                return _StockCompanyName;
+            }
+            set
+            {
+                if (_StockCompanyName != value)
+                {
+                    _StockCompanyName = value;
+                    RaisePropertyChanged("StockCompanyName");
+                }
+            }
+        }
+
+        string _StockPrice;
+        public string StockPrice
+
+        {
+            get
+            {
+                return _StockPrice;
+            }
+            set
+            {
+                if (_StockPrice != value)
+                {
+                    _StockPrice = value;
+                    RaisePropertyChanged("StockPrice");
+                }
+            }
+        }
+
         void RaisePropertyChanged(string prop)
         {
             if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs(prop)); }

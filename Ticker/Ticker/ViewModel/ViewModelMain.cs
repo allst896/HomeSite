@@ -5,6 +5,8 @@ using System.Text;
 using System.Collections.ObjectModel;
 using Ticker.Model;
 using Ticker.Helpers;
+using Newtonsoft.Json;
+using System.Windows;
 
 namespace Ticker.ViewModel
 {
@@ -12,6 +14,22 @@ namespace Ticker.ViewModel
     {
         public ObservableCollection<Stocks> Symbols { get; set; }
 
+        object _SelectedStock;
+        public object SelectedStock
+        {
+            get
+            {
+                return _SelectedStock;
+            }
+            set
+            {
+                if (_SelectedStock != value)
+                {
+                    _SelectedStock = value;
+                    RaisePropertyChanged("SelectedStock");
+                }
+            }
+        }
         string _TextProperty1;
         public string TextProperty1
         {
@@ -32,12 +50,19 @@ namespace Ticker.ViewModel
         public RelayCommand AddSymbolCommand { get; set; }
         public RelayCommand GetCompanyCommand { get; set; }
 
+        public class Quote
+        {
+            public string symbol { get; set; }
+            public string companyName { get; set; }
+            public string latestPrice { get; set; }
+        }
+
         public ViewModelMain()
         {
             Symbols = new ObservableCollection<Stocks>
             {
-                new Stocks{ StockSymbol="GOOG" },
-                new Stocks{ StockSymbol="APPL"},
+                //    new Stocks{ StockSymbol="GOOG" },
+                //    new Stocks{ StockSymbol="APPL"},
             };
 
             AddSymbolCommand = new RelayCommand(AddSymbol);
@@ -46,14 +71,36 @@ namespace Ticker.ViewModel
 
         void AddSymbol(object parameter)
         {
+            string IEXJson = "";
+
             if (parameter == null) return;
-            Symbols.Add(new Stocks { StockSymbol = parameter.ToString() });
+            //Symbols.Add(new Stocks { StockSymbol = parameter.ToString() });
+            IEXJson = Retriever.IEXTradingQuoteJson(parameter.ToString());
+            if (IEXJson != "")
+            {
+                Quote quote = new Quote();
+                quote = JsonConvert.DeserializeObject<Quote>(IEXJson);
+                Symbols.Add(new Stocks { StockSymbol = quote.symbol, StockCompanyName = quote.companyName, StockPrice = quote.latestPrice });
+            }
+            else
+            {
+                
+            }
         }
 
         void GetCompany(object parameter)
         {
+            string IEXJson = "";
+
             if (parameter == null) return;
-            TextProperty1 = Retriever.GetCompanyName(parameter.ToString());
+            //TextProperty1 = Retriever.GetCompanyName(parameter.ToString());
+            IEXJson = Retriever.IEXTradingQuoteJson(parameter.ToString());
+            if (IEXJson != "")
+            {
+                Quote quote = new Quote();
+                quote = JsonConvert.DeserializeObject<Quote>(IEXJson);
+                TextProperty1 = quote.companyName;
+            }
         }
     }
 }

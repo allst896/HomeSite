@@ -37,7 +37,7 @@ namespace Ticker.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("7dc15e2195a9ccc280f286b10584c9c5")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string BarchartAPIKey {
             get {
                 return ((string)(this["BarchartAPIKey"]));

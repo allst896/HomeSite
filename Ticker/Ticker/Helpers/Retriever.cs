@@ -9,7 +9,6 @@ using System.IO;
 using System.Xml;
 using IronPython.Hosting;
 using Microsoft.Scripting.Hosting;
-using Ticker.GetQuote;
 using System.Net.Http;
 using System.Net.Http.Headers;
 
@@ -19,54 +18,24 @@ namespace Ticker.Helpers
     {
         static HttpClient client = new HttpClient();
 
-        public class Quote
+        public static string IEXTradingQuoteJson(string tsymbol)
         {
-            public string symbol { get; set; }
-            public string companyName { get; set; }
-            public string latestPrice { get; set; }
-        }
-
-        public static string GetCompanyName(string ssymbol)
-        {
-            string retSymbol = string.Empty;
+            string response = "";
 
             try
             {
-                //var url = Properties.Settings.Default.BarchartURL + "getProfile.xml?";
-                //var apikey = "apikey=" + Properties.Settings.Default.BarchartAPIKey;
-                //var uri = url + apikey + "&symbols=" + ssymbol;
-                Quote rquote = new Quote();
-
-                rquote = IEXTradingQuote(ssymbol);
-                retSymbol = rquote.companyName;
-            }
-            catch (Exception ex) { string temp = ex.Message; }
-            return retSymbol;
-        }
-
-        public static Quote IEXTradingQuote(string tsymbol)
-        {
-            Quote quote = new Quote();
-
-            try
-            {
-                string response="";
-
                 using (var wb = new WebClient())
                 {
                     response = wb.DownloadString("https://api.iextrading.com/1.0/stock/" + tsymbol + "/quote");
-                }
-                if (response != "")
-                {
-                    quote = JsonConvert.DeserializeObject<Quote>(response);
                 }
             }
             catch (Exception ex)
             {
 
             }
-            return quote;
+            return response;
         }
+
         public static string BarchartOnDemand()
         {
             string r = "";
