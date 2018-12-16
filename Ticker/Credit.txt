@@ -1,2 +1,0 @@
-https://code.msdn.microsoft.com/windowsdesktop/Easy-MVVM-Examples-fb8c409f/sourcecode?fileId=66202&pathId=1291101313
-https://github.com/aguecida/OptionsAnalysis/tree/master/historicals/Historical1/Models
