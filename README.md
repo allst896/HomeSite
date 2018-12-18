@@ -8,5 +8,5 @@ PhotoEdit (WPF) - Created for my father to rename and email photos
 + File Browser
 
 ## In Progress
-CattleWeb
+HomeSite
 + MVC
