@@ -89,3 +89,4 @@ C:\Users\allst\Documents\GitHub\portfolio\HomeSite\HomeSite\obj\Debug\HomeSite.c
 C:\Users\allst\Documents\GitHub\portfolio\HomeSite\HomeSite\obj\Debug\HomeSite.csproj.CopyComplete
 C:\Users\allst\Documents\GitHub\portfolio\HomeSite\HomeSite\obj\Debug\HomeSite.dll
 C:\Users\allst\Documents\GitHub\portfolio\HomeSite\HomeSite\obj\Debug\HomeSite.pdb
+C:\Users\allst\Documents\GitHub\portfolio\HomeSite\HomeSite\bin\roslyn\System.Threading.Tasks.Extensions.dll
