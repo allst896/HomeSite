@@ -20,6 +20,15 @@ namespace HomeSite.Controllers
             return View(model);
         }
 
+        public ActionResult LatestPost()
+        {
+            var latestRevew = from p in _posts
+                              orderby p.postDate descending
+                              select p;
+
+            return PartialView("_Post", latestRevew.First());
+        }
+
         static List<Post> _posts = new List<Post>
         {
             new Post
