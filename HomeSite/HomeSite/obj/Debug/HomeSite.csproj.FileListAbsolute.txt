@@ -154,3 +154,6 @@ C:\Users\allst\Documents\GitHub\portfolio\HomeSite\HomeSite\bin\WebMatrix.Data.x
 C:\Users\allst\Documents\GitHub\portfolio\HomeSite\HomeSite\bin\WebMatrix.WebData.xml
 C:\Users\allst\Documents\GitHub\portfolio\HomeSite\HomeSite\bin\Org.Mentalis.Security.Cryptography.xml
 C:\Users\allst\Documents\GitHub\portfolio\HomeSite\HomeSite\bin\Mono.Math.xml
+C:\Users\allst\Documents\GitHub\portfolio\HomeSite\HomeSite\obj\Debug\HomeSite.Migrations.InitialCreate.resources
+C:\Users\allst\Documents\GitHub\portfolio\HomeSite\HomeSite\obj\Debug\HomeSite.csproj.GenerateResource.cache
+C:\Users\allst\Documents\GitHub\portfolio\HomeSite\HomeSite\obj\Debug\HomeSite.Migrations.UpdateUserProfileandCows.resources

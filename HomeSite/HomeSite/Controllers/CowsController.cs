@@ -49,7 +49,7 @@ namespace HomeSite.Controllers
         [HttpPost]
         [Authorize(Roles = "admin")]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,tagNumber,Name,Description,DOB,Owner,Status,Notes,Dam,Sire")] Cow cow)
+        public ActionResult Create([Bind(Include = "Id,tagNumber,Name,Description,DOB,Sex,Owner,Status,Notes,Dam,Sire")] Cow cow)
         {
             if (ModelState.IsValid)
             {
@@ -83,7 +83,7 @@ namespace HomeSite.Controllers
         [HttpPost]
         [Authorize(Roles = "admin")]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,tagNumber,Name,Description,DOB,Owner,Status,Notes,Dam,Sire")] Cow cow)
+        public ActionResult Edit([Bind(Include = "Id,tagNumber,Name,Description,DOB,Sex,Owner,Status,Notes,Dam,Sire")] Cow cow)
         {
             if (ModelState.IsValid)
             {
