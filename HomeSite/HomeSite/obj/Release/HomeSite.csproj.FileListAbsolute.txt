@@ -88,3 +88,5 @@ C:\Users\allst\Documents\GitHub\portfolio\HomeSite\HomeSite\obj\Release\HomeSite
 C:\Users\allst\Documents\GitHub\portfolio\HomeSite\HomeSite\obj\Release\HomeSite.csproj.CopyComplete
 C:\Users\allst\Documents\GitHub\portfolio\HomeSite\HomeSite\obj\Release\HomeSite.dll
 C:\Users\allst\Documents\GitHub\portfolio\HomeSite\HomeSite\obj\Release\HomeSite.pdb
+C:\Users\allst\Documents\GitHub\portfolio\HomeSite\HomeSite\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\allst\Documents\GitHub\portfolio\HomeSite\HomeSite\obj\Release\HomeSite.csprojAssemblyReference.cache
