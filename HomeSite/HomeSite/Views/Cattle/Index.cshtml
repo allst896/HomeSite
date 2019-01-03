@@ -1,9 +1,21 @@
-﻿
+﻿@model IEnumerable<HomeSite.Models.CattleListViewModel>
+
 @{
     ViewBag.Title = "Cattle";
-    Layout = "~/Views/Shared/_CattleLayout.cshtml";
+    Layout = "~/Views/Cattle/_CattleLayout.cshtml";
 }
 
 <img src="~/images/IMG_0795.JPG" height="300" width="300" alt="Lazy Lou" />
 <img src="~/images/IMG_0875.JPG" height="300" width="300" alt="eating hay" />
 <img src="~/images/IMG_0876.JPG" height="300" width="300" alt="still eating hay" />
+
+<div class="divider">-</div>
+
+<form method="get" action="@Url.Action("Index")"
+      data-cattle-ajax="true" data-cattle-target="#cattleList">
+
+    <input type="search" name="searchTerm" data-cattle-autocomplete="@Url.Action("Autocomplete")" />
+    <input type="submit" value="Search By Tag Number/Name" />
+</form>
+
+@Html.Partial("_Cattle", Model)
