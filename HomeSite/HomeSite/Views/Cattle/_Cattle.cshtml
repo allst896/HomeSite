@@ -1,0 +1,34 @@
+﻿@model IPagedList<HomeSite.Models.CattleListViewModel>
+
+<div id="cattleList">
+    <div class="pagedList" data-cattle-target="#cattleList">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }),
+        PagedListRenderOptions.MinimalWithItemCountText)
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">
+            Tag Number
+        </div>
+        <div class="col-md-3">
+            Name
+        </div>
+        <div class="col-md-3">
+            Sex
+        </div>
+    </div>
+    @foreach (var item in Model)
+    {
+        <div class="row">
+            <div class="col-md-2">
+                @item.TagNumber
+            </div>
+            <div class="col-md-3">
+                @item.Name
+            </div>
+            <div class="col-md-3">
+                @item.Sex
+            </div>
+        </div>
+    }
+</div>
