@@ -6,8 +6,15 @@
 <div class="navbar-collapse collapse">
     <ul class="nav navbar-nav">
         <li>@Html.ActionLink("Cows", "Index", "Cows")</li>
-        <li>@Html.ActionLink("Bulls","Index","Bulls")</li>
-        <li>@Html.ActionLink("Login","Login","Account")</li>
+        <li>@Html.ActionLink("Bulls", "Index", "Bulls")</li>
+        @if (ViewContext.HttpContext.User.IsInRole("admin"))
+        {
+            <li>@Html.ActionLink("Logout", "LogOff", "Account")</li>
+        }
+        else
+        {
+            <li>@Html.ActionLink("Login", "Login", "Account")</li>
+        }
     </ul>
 </div>
 <br />
