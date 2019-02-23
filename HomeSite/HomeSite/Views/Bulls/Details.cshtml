@@ -34,6 +34,13 @@
             @Html.DisplayFor(model => model.PurchasedFrom)
         </dd>
 
+        <dt>
+            Calf List
+        </dt>
+
+        <dd>
+            @Html.ActionLink("Calves", "Calves", new { id = Model.Id })
+        </dd>
     </dl>
 </div>
 <p>

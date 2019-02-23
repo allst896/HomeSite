@@ -7,12 +7,24 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using HomeSite.Models;
+using PagedList;
 
 namespace HomeSite.Controllers
 {
     public class CowsController : Controller
     {
         private HomeSiteDb db = new HomeSiteDb();
+        private IHomeSiteDb _db;
+
+        public CowsController()
+        {
+            _db = new HomeSiteDb();
+        }
+
+        public CowsController(IHomeSiteDb idb)
+        {
+            _db = idb;
+        }
 
         // GET: Cows
         public ActionResult Index()
@@ -20,8 +32,46 @@ namespace HomeSite.Controllers
             return View(db.Cows.ToList());
         }
 
+        //GET: Cows/Calves/5
+        public ActionResult Calves(int? id, int page = 1)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Cow cow = db.Cows.Find(id);
+            if (cow == null)
+            {
+                return HttpNotFound();
+            }
+            string cowname = cow.Name;
+            List<CalfListViewModel> listCalves = new List<CalfListViewModel>();
+
+            listCalves =
+                _db.Query<Cow>()
+                .Where(r => r.Dam == cow.tagNumber)
+                .OrderByDescending(r => r.DOB)
+                .Select(r => new CalfListViewModel
+                {
+                    Id = r.Id,
+                    ParentName = cowname,
+                    ParentSex = "F",
+                    Name = r.Name,
+                    DOB = r.DOB,
+                    tagNumber = r.tagNumber,
+                    Sex = r.Sex,
+                    Status = r.Status,
+                    Owner = r.Owner,
+                    Sire = r.Sire
+                }).ToList();
+
+            var model = listCalves.ToPagedList(page, 10);
+
+            return View(model);
+        }
+
         // GET: Cows/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int? id, int page = 1)
         {
             if (id == null)
             {
