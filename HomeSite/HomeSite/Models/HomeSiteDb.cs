@@ -50,5 +50,7 @@ namespace HomeSite.Models
         {
             SaveChanges();
         }
+
+        public System.Data.Entity.DbSet<HomeSite.Models.CattleListViewModel> CattleListViewModels { get; set; }
     }
 }

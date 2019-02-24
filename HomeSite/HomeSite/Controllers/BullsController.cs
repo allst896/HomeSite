@@ -99,7 +99,7 @@ namespace HomeSite.Controllers
         [HttpPost]
         [Authorize(Roles = "admin")]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Description,PurchasedFrom")] Bull bull)
+        public ActionResult Create([Bind(Include = "Id,Name,Description,PurchasedFrom,Status")] Bull bull)
         {
             if (ModelState.IsValid)
             {
@@ -133,7 +133,7 @@ namespace HomeSite.Controllers
         [HttpPost]
         [Authorize(Roles = "admin")]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Description,PurchasedFrom")] Bull bull)
+        public ActionResult Edit([Bind(Include = "Id,Name,Description,PurchasedFrom,Status")] Bull bull)
         {
             if (ModelState.IsValid)
             {

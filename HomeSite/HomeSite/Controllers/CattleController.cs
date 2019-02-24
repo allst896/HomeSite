@@ -44,7 +44,9 @@ namespace HomeSite.Controllers
 
             listBulls =
                 _db.Query<Bull>()
-                    .Where(r => searchTerm == null || r.Name.Contains(searchTerm))
+                    .Where(r =>
+                        (searchTerm == null || r.Name.Contains(searchTerm)) &&
+                        (r.Status.Contains("Farm")))
                     .Select(r => new CattleListViewModel
                     {
                         Id = r.Id,
@@ -56,7 +58,9 @@ namespace HomeSite.Controllers
             listCows =
                 _db.Query<Cow>()
                     .OrderByDescending(r => r.tagNumber)
-                    .Where(r => searchTerm == null || r.tagNumber.ToString().Contains(searchTerm) || r.Name.Contains(searchTerm))
+                    .Where(r => 
+                        (searchTerm == null || r.tagNumber.ToString().Contains(searchTerm) || r.Name.Contains(searchTerm)) &&
+                        (r.Status.Contains("Farm")))
                     .Select(r => new CattleListViewModel
                     {
                         Id = r.Id,

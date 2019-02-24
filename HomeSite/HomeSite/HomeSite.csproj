@@ -361,6 +361,7 @@
     <Content Include="Views\Cattle\Index.cshtml" />
     <Content Include="Views\Cattle\_Cattle.cshtml" />
     <Content Include="Views\Shared\Calves.cshtml" />
+    <Content Include="Views\Cattle\AllCattle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

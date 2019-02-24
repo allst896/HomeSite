@@ -29,7 +29,7 @@ namespace HomeSite.Controllers
         // GET: Cows
         public ActionResult Index()
         {
-            return View(db.Cows.ToList());
+            return View(db.Cows.OrderBy(c => c.DOB).ToList());
         }
 
         //GET: Cows/Calves/5
