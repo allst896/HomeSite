@@ -65,7 +65,7 @@ namespace HomeSite.Controllers
 
             var lCows =
                 _db.Query<Cow>()
-                    .OrderByDescending(r => r.tagNumber)
+                    .OrderByDescending(r => r.DOB)
                     .Where(r => 
                         (searchTerm == null || r.tagNumber.ToString().Contains(searchTerm) || r.Name.Contains(searchTerm)) &&
                         (r.Status.Contains("Farm")))
@@ -81,7 +81,7 @@ namespace HomeSite.Controllers
             {
                 Id = r.Id,
                 Name = r.Name,
-                TagNumber = string.Empty,
+                TagNumber = r.TagNumber.ToString(),
                 Sex = "Female"
             }).ToList();
 
