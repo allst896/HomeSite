@@ -1,0 +1,70 @@
+﻿@model IPagedList<HomeSite.Models.CalfListViewModel>
+
+@{
+    ViewBag.Title = "Calves";
+    if (Model.Count > 0)
+    {
+        ViewBag.ParentName = Model.First().ParentName;
+        ViewBag.ParentSex = Model.First().ParentSex;
+    }
+}
+
+<h2>Calves for @ViewBag.ParentName</h2>
+
+<div class="calfList">
+    <div class="row">
+        <div class="col-md-1">
+            Tag Number
+        </div>
+        <div class="col-md-2">
+            Name
+        </div>
+        <div class="col-md-2">
+            DOB
+        </div>
+        <div class="col-md-1">
+            Sex
+        </div>
+        <div class="col-md-1">
+            Status
+        </div>
+        <div class="col-md-1">
+            Owner
+        </div>
+        <div class="col-md-1">
+            @if (ViewBag.ParentSex == "F") { <text> Sire </text> }
+            else { <text> Dam </text>}
+        </div>
+
+    </div>
+    @foreach (var item in Model)
+    {
+        <div class="row">
+            <div class="col-md-1">
+                @item.tagNumber
+            </div>
+            <div class="col-md-2">
+                @item.Name
+            </div>
+            <div class="col-md-2">
+                @item.DOB.ToShortDateString()
+            </div>
+            <div class="col-md-1">
+                @item.Sex
+            </div>
+            <div class="col-md-1">
+                @item.Status
+            </div>
+            <div class="col-md-1">
+                @item.Owner
+            </div>
+            <div class="col-md-1">
+                @if (ViewBag.ParentSex == "F") { <text> @item.Sire </text> }
+                else { <text> @item.Dam </Text> }
+            </div>
+        </div>
+    }
+        <p>
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+</div>

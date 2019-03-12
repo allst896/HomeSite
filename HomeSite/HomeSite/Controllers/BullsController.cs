@@ -7,17 +7,67 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using HomeSite.Models;
+using PagedList;
 
 namespace HomeSite.Controllers
 {
     public class BullsController : Controller
     {
         private HomeSiteDb db = new HomeSiteDb();
+        private IHomeSiteDb _db;
+
+        public BullsController()
+        {
+            _db = new HomeSiteDb();
+        }
+
+        public BullsController(IHomeSiteDb idb)
+        {
+            _db = idb;
+        }
 
         // GET: Bulls
         public ActionResult Index()
         {
             return View(db.Bulls.ToList());
+        }
+
+        //GET: Bulls/Calves/5
+        public ActionResult Calves(int? id, int page = 1)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Bull bull = db.Bulls.Find(id);
+            if (bull == null)
+            {
+                return HttpNotFound();
+            }
+            string bullname = bull.Name;
+            List<CalfListViewModel> listCalves = new List<CalfListViewModel>();
+
+            listCalves =
+                _db.Query<Cow>()
+                .Where(r => r.Sire == bull.Name)
+                .OrderByDescending(r => r.DOB)
+                .Select(r => new CalfListViewModel
+                {
+                    Id = r.Id,
+                    ParentName = bullname,
+                    ParentSex = "M",
+                    Name = r.Name,
+                    DOB = r.DOB,
+                    tagNumber = r.tagNumber,
+                    Sex = r.Sex,
+                    Status = r.Status,
+                    Owner = r.Owner,
+                    Dam = r.Dam
+                }).ToList();
+
+            var model = listCalves.ToPagedList(page, 10);
+
+            return View(model);
         }
 
         // GET: Bulls/Details/5
@@ -49,7 +99,7 @@ namespace HomeSite.Controllers
         [HttpPost]
         [Authorize(Roles = "admin")]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Description,PurchasedFrom")] Bull bull)
+        public ActionResult Create([Bind(Include = "Id,Name,Description,PurchasedFrom,Status")] Bull bull)
         {
             if (ModelState.IsValid)
             {
@@ -83,7 +133,7 @@ namespace HomeSite.Controllers
         [HttpPost]
         [Authorize(Roles = "admin")]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Description,PurchasedFrom")] Bull bull)
+        public ActionResult Edit([Bind(Include = "Id,Name,Description,PurchasedFrom,Status")] Bull bull)
         {
             if (ModelState.IsValid)
             {

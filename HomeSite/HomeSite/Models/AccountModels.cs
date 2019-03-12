@@ -8,10 +8,6 @@ using System.Web.Security;
 
 namespace HomeSite.Models
 {
-    
-
-    
-
     public class RegisterExternalLoginModel
     {
         [Required]

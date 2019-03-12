@@ -16,7 +16,6 @@ namespace HomeSite.Models
         public string Name { get; set; }
         public string Description { get; set; }
 
-        [DataType(DataType.Date)]
         public DateTime DOB { get; set; }
         public string Sex { get; set; }
         public string Owner { get; set; }

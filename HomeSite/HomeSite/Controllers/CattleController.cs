@@ -42,10 +42,12 @@ namespace HomeSite.Controllers
             List<CattleListViewModel> listBulls = new List<CattleListViewModel>();
             List<CattleListViewModel> listCows = new List<CattleListViewModel>();
 
-            listBulls =
+            var lBulls =
                 _db.Query<Bull>()
-                    .Where(r => searchTerm == null || r.Name.Contains(searchTerm))
-                    .Select(r => new CattleListViewModel
+                    .Where(r =>
+                        (searchTerm == null || r.Name.Contains(searchTerm)) &&
+                        (r.Status.Contains("Farm")))
+                    .Select(r => new
                     {
                         Id = r.Id,
                         Name = r.Name,
@@ -53,17 +55,35 @@ namespace HomeSite.Controllers
                         Sex = "Male"
                     }).ToList();
 
-            listCows =
+            listBulls = lBulls.Select(r => new CattleListViewModel
+            {
+                Id = r.Id,
+                Name = r.Name,
+                TagNumber = string.Empty,
+                Sex = "Male"
+            }).ToList();
+
+            var lCows =
                 _db.Query<Cow>()
-                    .OrderByDescending(r => r.tagNumber)
-                    .Where(r => searchTerm == null || r.tagNumber.ToString().Contains(searchTerm) || r.Name.Contains(searchTerm))
-                    .Select(r => new CattleListViewModel
+                    .OrderByDescending(r => r.DOB)
+                    .Where(r => 
+                        (searchTerm == null || r.tagNumber.ToString().Contains(searchTerm) || r.Name.Contains(searchTerm)) &&
+                        (r.Status.Contains("Farm")))
+                    .Select(r => new
                     {
                         Id = r.Id,
                         Name = r.Name,
                         TagNumber = r.tagNumber.ToString(),
                         Sex = "Female"
                     }).ToList();
+
+            listCows = lCows.Select(r => new CattleListViewModel
+            {
+                Id = r.Id,
+                Name = r.Name,
+                TagNumber = r.TagNumber.ToString(),
+                Sex = "Female"
+            }).ToList();
 
             var model = listBulls.Union(listCows).ToPagedList(page, 10);
 
