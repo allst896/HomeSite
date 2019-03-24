@@ -262,8 +262,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\APIController.cs" />
+    <Compile Include="Controllers\MobileController.cs" />
     <Compile Include="Controllers\BullsController.cs" />
     <Compile Include="Controllers\CattleController.cs" />
     <Compile Include="Controllers\CowsController.cs" />
@@ -285,6 +286,7 @@
     <Compile Include="Models\Bull.cs" />
     <Compile Include="Models\CalfListViewModel.cs" />
     <Compile Include="Models\CattleListViewModel.cs" />
+    <Compile Include="Models\CattleService.cs" />
     <Compile Include="Models\Cow.cs" />
     <Compile Include="Models\HomeSiteDb.cs" />
     <Compile Include="Models\Post.cs" />

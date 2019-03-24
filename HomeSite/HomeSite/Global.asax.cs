@@ -8,6 +8,8 @@ using System.Web.Routing;
 using WebMatrix.WebData;
 using System.Data.Entity.Migrations;
 using HomeSite.Migrations;
+using System.Web.Http;
+using HomeSite.App_Start;
 
 namespace HomeSite
 {
@@ -25,6 +27,7 @@ namespace HomeSite
 
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
